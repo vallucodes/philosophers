@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:43:47 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 10:18:25 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 13:54:39 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,25 @@ void	drop_the_forks(t_philo *philo, t_forks *forks)
 	}
 }
 
-void	destroy_forks(t_global_data *globals)
+void	destroy_current_forks(t_global_data *globals, int amount)
 {
-	int	i;
+	while (--amount >= 0)
+		mutex_handle(&globals->forks[amount], DESTROY);
+}
 
-	i = 0;
-	while (i < globals->amount)
-	{
-		mutex_handle(&globals->forks[i], DESTROY);
-		i++;
-	}
+void	destroy_current_threads(t_global_data *globals, int amount)
+{
+	while (--amount >= 0)
+		thread_handle(&globals->philos[amount].thread, NULL, NULL, JOIN);
+}
+
+void	cleanup_in_init(t_global_data *globals, int amount)
+{
+	destroy_current_threads(globals, amount);
+	destroy_current_forks(globals, globals->amount);
+	mutex_handle(&globals->msg_lock, DESTROY);
+	mutex_handle(&globals->death_lock, DESTROY);
+	mutex_handle(&globals->meal_lock, DESTROY);
+	mutex_handle(&globals->start_lock, DESTROY);
+	cleanup(globals);
 }

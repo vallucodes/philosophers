@@ -6,13 +6,13 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:08:35 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 13:22:08 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 13:56:24 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	start_the_dinner(t_global_data *globals)
+bool	start_the_dinner(t_global_data *globals)
 {
 	int			i;
 	t_philo		*philo;
@@ -21,13 +21,16 @@ void	start_the_dinner(t_global_data *globals)
 	i = 0;
 	while (i < globals->amount)
 	{
-		thread_handle(&philo[i].thread, &philo[i], thread_routine, CREATE);
+		if (thread_handle(&philo[i].thread, &philo[i], thread_routine, CREATE) == FAIL)
+			return (cleanup_in_init(globals, i), FAIL);
 		i++;
 	}
-	thread_handle(&globals->observer, globals, observer_routine, CREATE);
+	if (thread_handle(&globals->observer, globals, observer_routine, CREATE) == FAIL)
+		return (cleanup_in_init(globals, globals->amount), FAIL);
 	mutex_handle(&philo->globals->start_lock, LOCK);
 	globals->start_flag = 1;
 	mutex_handle(&philo->globals->start_lock, UNLOCK);
+	return (SUCCESS);
 }
 
 static void	assign_forks(t_global_data *globals, t_philo *philo, int i)
@@ -68,12 +71,6 @@ void	init_philos(t_global_data *globals)
 		philo[i].globals = globals;
 		i++;
 	}
-}
-
-void	destroy_current_forks(t_global_data *globals, int amount)
-{
-	while (--amount >= 0)
-		mutex_handle(&globals->forks[amount], DESTROY);
 }
 
 bool	init_forks(t_global_data *globals)

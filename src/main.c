@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:41:06 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 13:20:32 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 13:57:49 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,8 @@
 
 static void	cleanup_and_free(t_global_data *globals)
 {
-	int i;
-
-	i = 0;
-	while (i < globals->amount)
-		thread_handle(&globals->philos[i++].thread, NULL, NULL, JOIN);
 	thread_handle(&globals->observer, NULL, NULL, JOIN);
-	destroy_forks(globals);
-	mutex_handle(&globals->msg_lock, DESTROY);
-	mutex_handle(&globals->death_lock, DESTROY);
-	mutex_handle(&globals->meal_lock, DESTROY);
-	mutex_handle(&globals->start_lock, DESTROY);
-	free(globals->philos);
-	free(globals->forks);
+	cleanup_in_init(globals, globals->amount);
 }
 
 static bool	init_mutexes(t_global_data *globals)
@@ -81,7 +70,8 @@ bool	go_to_the_table(t_global_data *globals)
 	if (init_program(globals) == FAIL)
 		return (FAIL);
 	init_philos(globals);
-	start_the_dinner(globals);
+	if (start_the_dinner(globals) == FAIL)
+		return (FAIL);
 	cleanup_and_free(globals);
 	return (SUCCESS);
 }

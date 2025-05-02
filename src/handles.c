@@ -6,16 +6,16 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 22:58:29 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 12:57:27 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 13:48:34 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	thread_error(int return_value, t_ops op)
+bool	thread_error(int return_value, t_ops op)
 {
 	if (return_value == 0)
-		return ;
+		return (SUCCESS);
 	if (return_value == EAGAIN)
 		print_error("Insufficient resources to create another thread.");
 	else if (return_value == EINVAL && op == CREATE)
@@ -30,14 +30,19 @@ void	thread_error(int return_value, t_ops op)
 		print_error("No thread with the ID thread could be found.");
 	else
 		print_error("Unknown thread error occurred.");
+	return (FAIL);
 }
 
-void	thread_handle(pthread_t *thrd, void *data, void *(*func)(void *), t_ops op)
+bool	thread_handle(pthread_t *thrd, void *data, void *(*func)(void *), t_ops op)
 {
 	if (op == CREATE)
-		thread_error(pthread_create(thrd, NULL, func, data), op);
+	{
+		if (thread_error(pthread_create(thrd, NULL, func, data), op) == FAIL)
+			return (FAIL);
+	}
 	if (op == JOIN)
 		thread_error(pthread_join(*thrd, NULL), op);
+	return (SUCCESS);
 }
 
 bool	mutex_error(int return_value, t_ops op)
