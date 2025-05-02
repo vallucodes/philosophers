@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:39:19 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 16:17:01 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 17:06:26 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@
 # define ARGS1		"Incorrect amount of arguments\nUsage: ./philo [number_of_"
 # define ARGS2		"philosophers] [time_to_die] [time_to_eat] [time_to_sleep] "
 # define ARGS3		"([number_of_times_each_philosopher_must_eat])\n"
-# define MALLOC		"malloc failure"
+# define MALLOC		"Error: malloc failure\n"
 # define EATING		"is eating"
 # define SLEEPING	"is sleeping"
 # define THINKING	"is thinking"
 # define FORK		"has taken a fork"
 # define DEATH		"died"
 
-# define INPUT			"Error: input not valid, must be numeric\n"
+# define INPUT		"Error: input not valid, must be numeric\n"
 # define AMOUNT		"Error: amount of philosophers must be between 1 and 1000\n"
 # define TIME_TO_DIE	"Error: time to die must be greater than 0\n"
 # define TIME_TO_EAT	"Error: time to eat must be greater than 0\n"
@@ -154,7 +154,7 @@ int		msg_broadcast(t_philo *philo, char *msg, int death, t_forks *forks);
 
 //handles
 bool	thread_handle(pthread_t *thread, void *data,
-		void *(*function)(void *), t_ops op);
+			void *(*function)(void *), t_ops op);
 bool	mutex_handle(pthread_mutex_t *mutex, t_ops op);
 
 #endif

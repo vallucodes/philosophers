@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 15:57:04 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 15:59:17 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 16:56:25 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ int	ft_isdigit(int c)
 
 int	ft_atoi(const char *str, bool *overflow)
 {
-	int	i;
-	int	result;
+	int		i;
+	long	result;
 
 	result = 0;
 	i = 0;
 	while (ft_isdigit(str[i]))
 	{
 		result = result * 10 + str[i] - '0';
-		if (result < 0)
+		if (result > 2147483647)
 		{
 			*overflow = 1;
 			return (1);
 		}
 		i++;
 	}
-	return (result);
+	return ((int)result);
 }
 
 size_t	ft_strlen(const char *str)
