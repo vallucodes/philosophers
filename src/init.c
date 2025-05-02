@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:08:35 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 09:49:34 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 12:22:57 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,23 @@ void	init_philos(t_global_data *globals)
 	}
 }
 
-void	init_forks(t_global_data *globals)
+void	destroy_current_forks(t_global_data *globals, int amount)
+{
+	while (--amount >= 0)
+		mutex_handle(&globals->forks[amount], DESTROY);
+}
+
+bool	init_forks(t_global_data *globals)
 {
 	int	i;
 
 	i = 0;
 	while (i < globals->amount)
 	{
-		mutex_handle(&globals->forks[i], INIT);
+		if (mutex_handle(&globals->forks[i], INIT) == FAIL)
+			return (destroy_current_forks(globals, i), FAIL);
 		i++;
 	}
+	return (SUCCESS);
 }
 

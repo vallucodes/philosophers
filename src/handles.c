@@ -6,13 +6,13 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 22:58:29 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 10:06:59 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 12:25:36 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	thread_error(int return_value, t_ops op)
+bool	thread_error(int return_value, t_ops op)
 {
 	if (return_value == 0)
 		return ;
@@ -32,7 +32,7 @@ void	thread_error(int return_value, t_ops op)
 		print_error("Unknown thread error occurred.");
 }
 
-void	thread_handle(pthread_t *thrd, void *data, void *(*func)(void *), t_ops op)
+bool	thread_handle(pthread_t *thrd, void *data, void *(*func)(void *), t_ops op)
 {
 	if (op == CREATE)
 		thread_error(pthread_create(thrd, NULL, func, data), op);
@@ -40,10 +40,10 @@ void	thread_handle(pthread_t *thrd, void *data, void *(*func)(void *), t_ops op)
 		thread_error(pthread_join(*thrd, NULL), op);
 }
 
-void	mutex_error(int return_value, t_ops op)
+bool	mutex_error(int return_value, t_ops op)
 {
 	if (return_value == 0)
-		return ;
+		return (SUCCESS);
 	if (return_value == EAGAIN)
 		print_error("Max recursive locks exceeded or resource limit reached.");
 	else if (return_value == EINVAL && op == INIT)
@@ -62,17 +62,30 @@ void	mutex_error(int return_value, t_ops op)
 		print_error("Previous mutex owner terminated unexpectedly.");
 	else
 		print_error("Unknown mutex error occurred.");
+	return (FAIL);
 }
 
+// int	failing_pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *attr)
+// {
+// 	static int call_count = 0;
+// 	call_count++;
+// 	if (call_count == 3)
+// 		return EAGAIN;
+// 	return pthread_mutex_init(mutex, attr);
+// }
 
-void	mutex_handle(pthread_mutex_t *mutex, t_ops op)
+bool	mutex_handle(pthread_mutex_t *mutex, t_ops op)
 {
 	if (op == INIT)
-		mutex_error(pthread_mutex_init(mutex, NULL), op);
+	{
+		if (mutex_error(pthread_mutex_init(mutex, NULL), op) == FAIL)
+			return (FAIL);
+	}
 	if (op == LOCK)
 		mutex_error(pthread_mutex_lock(mutex), op);
 	if (op == UNLOCK)
 		mutex_error(pthread_mutex_unlock(mutex), op);
 	if (op == DESTROY)
 		mutex_error(pthread_mutex_destroy(mutex), op);
+	return (SUCCESS);
 }

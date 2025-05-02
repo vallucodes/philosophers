@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:41:06 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 10:45:13 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 12:23:16 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,28 @@ static void	cleanup_and_free(t_global_data *globals)
 
 static bool	init_mutexes(t_global_data *globals)
 {
-	init_forks(globals);
-	mutex_handle(&globals->msg_lock, INIT);
-	mutex_handle(&globals->death_lock, INIT);
-	mutex_handle(&globals->meal_lock, INIT);
-	mutex_handle(&globals->start_lock, INIT);
+	if (init_forks(globals) == FAIL)
+		return (FAIL);
+	if (mutex_handle(&globals->msg_lock, INIT) == FAIL)
+		return (destroy_current_forks(globals, globals->amount), FAIL);
+	if (mutex_handle(&globals->death_lock, INIT) == FAIL)
+	{
+		mutex_handle(&globals->msg_lock, DESTROY);
+		return (destroy_current_forks(globals, globals->amount), FAIL);
+	}
+	if (mutex_handle(&globals->meal_lock, INIT) == FAIL)
+	{
+		mutex_handle(&globals->msg_lock, DESTROY);
+		mutex_handle(&globals->death_lock, DESTROY);
+		return (destroy_current_forks(globals, globals->amount), FAIL);
+	}
+	if (mutex_handle(&globals->start_lock, INIT) == FAIL)
+	{
+		mutex_handle(&globals->msg_lock, DESTROY);
+		mutex_handle(&globals->death_lock, DESTROY);
+		mutex_handle(&globals->meal_lock, DESTROY);
+		return (destroy_current_forks(globals, globals->amount), FAIL);
+	}
 	return (SUCCESS);
 }
 
@@ -52,7 +69,8 @@ static bool	init_program(t_global_data *globals)
 		cleanup(globals);
 		return (print_error(MALLOC), FAIL);
 	}
-	init_mutexes(globals);
+	if (init_mutexes(globals) == FAIL)
+		return (cleanup(globals), FAIL);
 	globals->start_flag = 0;
 	return (SUCCESS);
 }

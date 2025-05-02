@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:39:19 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 10:22:09 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 12:25:22 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,7 @@ int		ft_isdigit(int c);
 
 //init
 void	init_philos(t_global_data *globals);
-// void	assign_forks(t_global_data *globals, t_philo *philo, int i);
-void	init_forks(t_global_data *globals);
+bool	init_forks(t_global_data *globals);
 void	start_the_dinner(t_global_data *globals);
 
 //routine
@@ -133,6 +132,7 @@ void	cleanup(t_global_data *globals);
 void	print_error(char *msg);
 void	destroy_forks(t_global_data *globals);
 void	drop_the_forks(t_philo *philo, t_forks *forks);
+void	destroy_current_forks(t_global_data *globals, int amount);
 
 //utils
 size_t	get_current_time();
@@ -140,10 +140,10 @@ bool	ft_asleep(t_philo *philo, size_t sleep_in_ms, t_forks *forks);
 int		msg_broadcast(t_philo *philo, char *msg, int death, t_forks *forks);
 
 //handles
-void	thread_error(int return_value, t_ops op);
-void	thread_handle(pthread_t *thread, void *data, void *(*function)(void *), t_ops op);
-void	mutex_error(int return_value, t_ops op);
-void	mutex_handle(pthread_mutex_t *mutex, t_ops op);
+bool	thread_error(int return_value, t_ops op);
+bool	thread_handle(pthread_t *thread, void *data, void *(*function)(void *), t_ops op);
+bool	mutex_error(int return_value, t_ops op);
+bool	mutex_handle(pthread_mutex_t *mutex, t_ops op);
 
 bool	check_any_death(t_philo *philo);
 
