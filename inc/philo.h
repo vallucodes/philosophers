@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:39:19 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 12:25:22 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 13:20:46 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ typedef struct s_global_data
 	int				meals;
 	int				stop_simulation;
 	t_philo			*philos;
+	pthread_t		observer;
 }	t_global_data;
 
 /*
@@ -140,8 +141,8 @@ bool	ft_asleep(t_philo *philo, size_t sleep_in_ms, t_forks *forks);
 int		msg_broadcast(t_philo *philo, char *msg, int death, t_forks *forks);
 
 //handles
-bool	thread_error(int return_value, t_ops op);
-bool	thread_handle(pthread_t *thread, void *data, void *(*function)(void *), t_ops op);
+void	thread_error(int return_value, t_ops op);
+void	thread_handle(pthread_t *thread, void *data, void *(*function)(void *), t_ops op);
 bool	mutex_error(int return_value, t_ops op);
 bool	mutex_handle(pthread_mutex_t *mutex, t_ops op);
 

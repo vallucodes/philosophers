@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:08:35 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 12:22:57 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 13:22:08 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	start_the_dinner(t_global_data *globals)
 {
 	int			i;
 	t_philo		*philo;
-	pthread_t	observer;
 
 	philo = globals->philos;
 	i = 0;
@@ -25,7 +24,7 @@ void	start_the_dinner(t_global_data *globals)
 		thread_handle(&philo[i].thread, &philo[i], thread_routine, CREATE);
 		i++;
 	}
-	thread_handle(&observer, globals, observer_routine, CREATE);
+	thread_handle(&globals->observer, globals, observer_routine, CREATE);
 	mutex_handle(&philo->globals->start_lock, LOCK);
 	globals->start_flag = 1;
 	mutex_handle(&philo->globals->start_lock, UNLOCK);

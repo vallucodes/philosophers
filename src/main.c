@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:41:06 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 12:23:16 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 13:20:32 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	cleanup_and_free(t_global_data *globals)
 	i = 0;
 	while (i < globals->amount)
 		thread_handle(&globals->philos[i++].thread, NULL, NULL, JOIN);
+	thread_handle(&globals->observer, NULL, NULL, JOIN);
 	destroy_forks(globals);
 	mutex_handle(&globals->msg_lock, DESTROY);
 	mutex_handle(&globals->death_lock, DESTROY);

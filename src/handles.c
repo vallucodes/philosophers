@@ -6,13 +6,13 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 22:58:29 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 12:25:36 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 12:57:27 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-bool	thread_error(int return_value, t_ops op)
+void	thread_error(int return_value, t_ops op)
 {
 	if (return_value == 0)
 		return ;
@@ -32,7 +32,7 @@ bool	thread_error(int return_value, t_ops op)
 		print_error("Unknown thread error occurred.");
 }
 
-bool	thread_handle(pthread_t *thrd, void *data, void *(*func)(void *), t_ops op)
+void	thread_handle(pthread_t *thrd, void *data, void *(*func)(void *), t_ops op)
 {
 	if (op == CREATE)
 		thread_error(pthread_create(thrd, NULL, func, data), op);
