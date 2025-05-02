@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:11:58 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/04/30 16:30:47 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 09:45:36 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,14 @@ static int	check_death(t_global_data *globals)
 	while (++i < globals->amount)
 	{
 		pthread_mutex_lock(&globals->meal_lock);
-		if (get_current_time() - globals->philos[i].last_meal >= (size_t)globals->time_to_die)
+		if (globals->philos[i].last_meal < get_current_time())
 		{
-			msg_broadcast(&globals->philos[i], DEATH, 1, NULL);
-			pthread_mutex_unlock(&globals->meal_lock);
-			return (QUIT);
+			if (get_current_time() - globals->philos[i].last_meal >= (size_t)globals->time_to_die)
+			{
+				msg_broadcast(&globals->philos[i], DEATH, 1, NULL);
+				pthread_mutex_unlock(&globals->meal_lock);
+				return (QUIT);
+			}
 		}
 		if (globals->philos[i].meal_count < globals->meals && globals->meals != -1)
 			meals_flag = 0;

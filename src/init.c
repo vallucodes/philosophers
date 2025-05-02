@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:08:35 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/01 17:28:22 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 09:49:34 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,13 @@ void	start_the_dinner(t_global_data *globals)
 	i = 0;
 	while (i < globals->amount)
 	{
-		philo[i].start = get_current_time();
-		philo[i].last_meal = philo[i].start;
-		i++;
-	}
-	i = 0;
-	while (i < globals->amount)
-	{
-
-		// printf("philo [%u], start time %zu\n", philo[i].id, philo[i].start);
 		thread_handle(&philo[i].thread, &philo[i], thread_routine, CREATE);
 		i++;
 	}
 	thread_handle(&observer, globals, observer_routine, CREATE);
+	mutex_handle(&philo->globals->start_lock, LOCK);
+	globals->start_flag = 1;
+	mutex_handle(&philo->globals->start_lock, UNLOCK);
 }
 
 static void	assign_forks(t_global_data *globals, t_philo *philo, int i)
@@ -57,14 +51,6 @@ static void	assign_forks(t_global_data *globals, t_philo *philo, int i)
 	}
 }
 
-int	starting_process(int amount, int i)
-{
-	if (amount % 2 == 0)
-		return (i % 2);
-	else
-		return (i % 3);
-}
-
 void	init_philos(t_global_data *globals)
 {
 	int	i;
@@ -78,6 +64,8 @@ void	init_philos(t_global_data *globals)
 		assign_forks(globals, &philo[i], i);
 		philo[i].current_process = 0;
 		philo[i].meal_count = 0;
+		philo[i].start = SIZE_MAX;
+		philo[i].last_meal = SIZE_MAX;
 		philo[i].globals = globals;
 		i++;
 	}

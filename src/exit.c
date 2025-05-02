@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:43:47 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/01 14:55:46 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 09:48:59 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ void	destroy_forks(t_global_data *globals)
 	while (i < globals->amount)
 	{
 		mutex_handle(&globals->forks[i], DESTROY);
-		// int value = pthread_mutex_destroy(&globals->forks[i]);
-		// printf("return %i\n", value);
 		i++;
 	}
 }

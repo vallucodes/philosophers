@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:39:19 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/01 14:56:30 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 09:47:20 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <limits.h> //LONG_MIN LONG_MAX
 # include <errno.h> //errno
 # include <stdbool.h> //bool
+# include <stdint.h> //SIZE_MAX
 
 # define ARGS1		"Incorrect amount of arguments\n"
 # define ARGS2		"Usage: ./philo [number_of_philosophers] [time_to_die] [time_to_eat] "
@@ -34,8 +35,13 @@
 # define QUIT		1
 # define CONTINUE	0
 
-# define INPUT		"Input not valid\n"
-# define OVERFLOW	"One of the values is too big\n"
+# define INPUT			"Error: input not valid, must be numeric"
+# define AMOUNT			"Error: amount of philosophers must be between 1 and 1000"
+# define TIME_TO_DIE	"Error: time to die must be greater than 0"
+# define TIME_TO_EAT	"Error: time to eat must be greater than 0"
+# define TIME_TO_SLEEP	"Error: time to sleep must be greater than 0"
+# define MEALS			"Error: am ount of meals must be greater than 0"
+# define OVERFLOW		"One of the values is too big"
 
 typedef struct s_forks
 {
@@ -81,6 +87,8 @@ typedef struct s_global_data
 	pthread_mutex_t	msg_lock;
 	pthread_mutex_t	death_lock;
 	pthread_mutex_t meal_lock;
+	pthread_mutex_t start_lock;
+	bool			start_flag;
 	pthread_mutex_t	*forks;
 	int				amount;
 	int				time_to_die;

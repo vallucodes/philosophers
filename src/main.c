@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:41:06 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/01 14:58:05 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 09:48:39 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	init_program(t_global_data *globals)
 	mutex_handle(&globals->msg_lock, INIT);
 	mutex_handle(&globals->death_lock, INIT);
 	mutex_handle(&globals->meal_lock, INIT);
+	mutex_handle(&globals->start_lock, INIT);
+	globals->start_flag = 0;
 }
 
 int	init_threads(t_global_data *globals)
