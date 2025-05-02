@@ -6,34 +6,35 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 22:58:29 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 13:48:34 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 16:20:50 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-bool	thread_error(int return_value, t_ops op)
+static bool	thread_error(int return_value, t_ops op)
 {
 	if (return_value == 0)
 		return (SUCCESS);
 	if (return_value == EAGAIN)
-		print_error("Insufficient resources to create another thread.");
+		print_error(THREAD_EAGAIN);
 	else if (return_value == EINVAL && op == CREATE)
-		print_error("Invalid settings in attr.");
+		print_error(THREAD_EINVAL1);
 	else if (return_value == EINVAL && op == JOIN)
-		print_error("Thread is not a joinable thread or another thread is already waiting to join with this thread.");
+		print_error(THREAD_EINVAL2);
 	else if (return_value == EPERM)
-		print_error("No permission to set the scheduling policy and parameters specified in attr.");
+		print_error(THREAD_EPERM);
 	else if (return_value == EDEADLK)
-		print_error("A deadlock was detected or thread specifies the calling thread.");
+		print_error(THREAD_EDEADLK);
 	else if (return_value == ESRCH)
-		print_error("No thread with the ID thread could be found.");
+		print_error(THREAD_ESRCH);
 	else
-		print_error("Unknown thread error occurred.");
+		print_error("Unknown thread error occurred.\n");
 	return (FAIL);
 }
 
-bool	thread_handle(pthread_t *thrd, void *data, void *(*func)(void *), t_ops op)
+bool	thread_handle(pthread_t *thrd, void *data,
+						void *(*func)(void *), t_ops op)
 {
 	if (op == CREATE)
 	{
@@ -45,39 +46,30 @@ bool	thread_handle(pthread_t *thrd, void *data, void *(*func)(void *), t_ops op)
 	return (SUCCESS);
 }
 
-bool	mutex_error(int return_value, t_ops op)
+static bool	mutex_error(int return_value, t_ops op)
 {
 	if (return_value == 0)
 		return (SUCCESS);
 	if (return_value == EAGAIN)
-		print_error("Max recursive locks exceeded or resource limit reached.");
+		print_error("Max recursive locks exceeded or resource limit reached.\n");
 	else if (return_value == EINVAL && op == INIT)
-		print_error("Invalid mutex attributes.");
+		print_error("Invalid mutex attributes.\n");
 	else if (return_value == EINVAL && (op == LOCK || op == UNLOCK))
-		print_error("Thread priority too high for mutex.");
+		print_error("Thread priority too high for mutex.\n");
 	else if (return_value == ENOMEM)
-		print_error("Insufficient memory for mutex operation.");
+		print_error("Insufficient memory for mutex operation.\n");
 	else if (return_value == EPERM)
-		print_error("No permission for this mutex operation.");
+		print_error("No permission for this mutex operation.\n");
 	else if (return_value == EDEADLK)
-		print_error("Deadlock detected or thread already owns mutex.");
+		print_error("Deadlock detected or thread already owns mutex.\n");
 	else if (return_value == ENOTRECOVERABLE)
-		print_error("Mutex state not recoverable.");
+		print_error("Mutex state not recoverable.\n");
 	else if (return_value == EOWNERDEAD)
-		print_error("Previous mutex owner terminated unexpectedly.");
+		print_error("Previous mutex owner terminated unexpectedly.\n");
 	else
-		print_error("Unknown mutex error occurred.");
+		print_error("Unknown mutex error occurred.\n");
 	return (FAIL);
 }
-
-// int	failing_pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *attr)
-// {
-// 	static int call_count = 0;
-// 	call_count++;
-// 	if (call_count == 3)
-// 		return EAGAIN;
-// 	return pthread_mutex_init(mutex, attr);
-// }
 
 bool	mutex_handle(pthread_mutex_t *mutex, t_ops op)
 {

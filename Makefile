@@ -1,6 +1,6 @@
 NAME		= philo
 CC			= cc
-CFLAGS		= -g -Wextra -Wall #-Werror
+CFLAGS		= -g -Wextra -Wall -Werror
 
 OBJ_DIR		= obj/
 SRC_DIR		= src/
@@ -13,8 +13,11 @@ SRC			=	main.c \
 				handles.c \
 				init.c \
 				parsing.c \
+				print_error.c \
 				routine_observer.c \
+				routine_philo_actions.c \
 				routine_philo.c \
+				utils_libft.c \
 				utils.c
 
 OBJS		= $(addprefix $(OBJ_DIR), $(SRC:.c=.o))

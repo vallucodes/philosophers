@@ -6,11 +6,21 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:08:35 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 13:56:24 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 16:07:42 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
+
+static void	collect_threads_stop_simulation(t_global_data *globals)
+{
+	mutex_handle(&globals->start_lock, LOCK);
+	globals->start_flag = 1;
+	mutex_handle(&globals->start_lock, UNLOCK);
+	pthread_mutex_lock(&globals->death_lock);
+	globals->stop_simulation = 1;
+	pthread_mutex_unlock(&globals->death_lock);
+}
 
 bool	start_the_dinner(t_global_data *globals)
 {
@@ -21,12 +31,20 @@ bool	start_the_dinner(t_global_data *globals)
 	i = 0;
 	while (i < globals->amount)
 	{
-		if (thread_handle(&philo[i].thread, &philo[i], thread_routine, CREATE) == FAIL)
+		if (thread_handle(&philo[i].thread, &philo[i],
+				thread_routine, CREATE) == FAIL)
+		{
+			collect_threads_stop_simulation(globals);
 			return (cleanup_in_init(globals, i), FAIL);
+		}
 		i++;
 	}
-	if (thread_handle(&globals->observer, globals, observer_routine, CREATE) == FAIL)
+	if (thread_handle(&globals->observer, globals,
+			observer_routine, CREATE) == FAIL)
+	{
+		collect_threads_stop_simulation(globals);
 		return (cleanup_in_init(globals, globals->amount), FAIL);
+	}
 	mutex_handle(&philo->globals->start_lock, LOCK);
 	globals->start_flag = 1;
 	mutex_handle(&philo->globals->start_lock, UNLOCK);
@@ -55,7 +73,7 @@ static void	assign_forks(t_global_data *globals, t_philo *philo, int i)
 
 void	init_philos(t_global_data *globals)
 {
-	int	i;
+	int		i;
 	t_philo	*philo;
 
 	philo = globals->philos;
@@ -86,4 +104,3 @@ bool	init_forks(t_global_data *globals)
 	}
 	return (SUCCESS);
 }
-

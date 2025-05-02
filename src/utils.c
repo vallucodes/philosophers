@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 13:32:58 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 10:24:51 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 16:17:40 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,9 @@ static bool	there_is_death_or_enough_meals(int death)
 	return (death == 1 || death == 2);
 }
 
-int	ft_isdigit(int c)
-{
-	return (c >= '0' && c <= '9');
-}
-
-int	ft_atoi(const char *str, bool *overflow)
-{
-	int	i;
-	int	result;
-
-	result = 0;
-	i = 0;
-	while (ft_isdigit(str[i]))
-	{
-		result = result * 10 + str[i] - '0';
-		if (result < 0)
-		{
-			*overflow = 1;
-			return (1);
-		}
-		i++;
-	}
-	return (result);
-}
-
 int	msg_broadcast(t_philo *philo, char *msg, int death, t_forks *forks)
 {
-	size_t timestamp;
+	size_t	timestamp;
 
 	pthread_mutex_lock(&philo->globals->msg_lock);
 	if (check_any_death(philo) == QUIT)
@@ -55,7 +30,6 @@ int	msg_broadcast(t_philo *philo, char *msg, int death, t_forks *forks)
 	if (death != 2)
 	{
 		timestamp = (get_current_time() - philo->start);
-		// printf("%li %i %s, meal count %i\n", timestamp, philo->id, msg, philo->meal_count);
 		printf("%li %i %s\n", timestamp, philo->id, msg);
 	}
 	if (there_is_death_or_enough_meals(death))
@@ -70,9 +44,9 @@ int	msg_broadcast(t_philo *philo, char *msg, int death, t_forks *forks)
 	return (1);
 }
 
-size_t	get_current_time()
+size_t	get_current_time(void)
 {
-	struct timeval time_now;
+	struct timeval	time_now;
 
 	if (gettimeofday(&time_now, NULL) == -1)
 		write(2, "Error gettimeofday()\n", 21);

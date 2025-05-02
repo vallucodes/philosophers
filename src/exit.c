@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:43:47 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 13:54:39 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 16:00:43 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@ void	cleanup(t_global_data *globals)
 {
 	free(globals->philos);
 	free(globals->forks);
-}
-
-void	print_error(char *msg)
-{
-	printf("%s\n", msg);
-	return ;
 }
 
 void	drop_the_forks(t_philo *philo, t_forks *forks)

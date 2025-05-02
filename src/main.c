@@ -6,12 +6,11 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:41:06 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 13:57:49 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 16:07:55 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
-// #include <signal.h>
 
 static void	cleanup_and_free(t_global_data *globals)
 {
@@ -76,12 +75,6 @@ bool	go_to_the_table(t_global_data *globals)
 	return (SUCCESS);
 }
 
-//to-do
-
-// make better logic for checking if meals are eaten
-// make mathematical models of how to calculate tipping point of death for even and odd
-
-
 int	main(int ac, char **av)
 {
 	t_global_data	globals;
@@ -94,11 +87,3 @@ int	main(int ac, char **av)
 		return (1);
 	return (0);
 }
-
-
-// cases
-// no death
-// ./philo 5 1000 300 100
-// ./philo 3 200 65 65 5
-// ./philo 5 600 150 150
-// death
