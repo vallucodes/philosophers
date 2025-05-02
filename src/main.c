@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:41:06 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 20:00:46 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 20:54:36 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static void	cleanup_and_free(t_global_data *globals)
 {
-	// printf("obs joining\n");
 	thread_handle(&globals->observer, NULL, NULL, JOIN);
 	cleanup_in_init(globals, globals->amount);
 }
