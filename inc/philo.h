@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:39:19 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 09:47:20 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 10:22:09 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@
 # define TIME_TO_DIE	"Error: time to die must be greater than 0"
 # define TIME_TO_EAT	"Error: time to eat must be greater than 0"
 # define TIME_TO_SLEEP	"Error: time to sleep must be greater than 0"
-# define MEALS			"Error: am ount of meals must be greater than 0"
-# define OVERFLOW		"One of the values is too big"
+# define MEALS			"Error: amount of meals must be greater than 0"
+# define OVERFLOW		"Error: One of the values is too big"
 
 typedef struct s_forks
 {
@@ -59,6 +59,12 @@ typedef enum e_ops
 	JOIN,
 	DETACH,
 }	t_ops;
+
+typedef enum e_return_value
+{
+	FAIL,
+	SUCCESS,
+}	t_return_value;
 
 typedef enum e_thinking_helper
 {
@@ -105,9 +111,8 @@ typedef struct s_global_data
 
 //parsing
 
-void	parse_input(t_global_data *globals, int ac, char **av);
-void	validate_input(char **av);
-int		ft_atoi(const char *str);
+bool	parse_input(t_global_data *globals, int ac, char **av);
+int		ft_atoi(const char *str, bool *overflow);
 int		ft_isdigit(int c);
 
 //init
@@ -123,8 +128,9 @@ int		thinking(t_philo *philo);
 void	*thread_routine(void *arg);
 void	*observer_routine(void *arg);
 
-//exit
-void	exit_error(char *msg);
+//error and quit handling
+void	cleanup(t_global_data *globals);
+void	print_error(char *msg);
 void	destroy_forks(t_global_data *globals);
 void	drop_the_forks(t_philo *philo, t_forks *forks);
 

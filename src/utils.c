@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 13:32:58 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/04/30 16:21:44 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 10:24:51 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,21 @@ int	ft_isdigit(int c)
 	return (c >= '0' && c <= '9');
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *str, bool *overflow)
 {
 	int	i;
 	int	result;
 
 	result = 0;
 	i = 0;
-	while (str[i] >= '0' && str[i] <= '9')
+	while (ft_isdigit(str[i]))
 	{
 		result = result * 10 + str[i] - '0';
 		if (result < 0)
-			exit_error(OVERFLOW);
+		{
+			*overflow = 1;
+			return (1);
+		}
 		i++;
 	}
 	return (result);

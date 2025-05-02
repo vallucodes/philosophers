@@ -6,16 +6,22 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:43:47 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 09:48:59 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 10:18:25 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/philo.h"
 
-void	exit_error(char *msg)
+void	cleanup(t_global_data *globals)
+{
+	free(globals->philos);
+	free(globals->forks);
+}
+
+void	print_error(char *msg)
 {
 	printf("%s\n", msg);
-	exit(1);
+	return ;
 }
 
 void	drop_the_forks(t_philo *philo, t_forks *forks)
