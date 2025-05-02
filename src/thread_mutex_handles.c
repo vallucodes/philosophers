@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 22:58:29 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 17:09:00 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 19:50:40 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ static bool	mutex_error(int return_value, t_ops op)
 	else if (return_value == EOWNERDEAD)
 		print_error("Previous mutex owner terminated unexpectedly.\n");
 	else
+	{
+		printf("error in %i", op);
 		print_error("Unknown mutex error occurred.\n");
+	}
 	return (FAIL);
 }
 

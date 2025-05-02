@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 16:14:20 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 16:28:04 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/02 20:00:22 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,23 @@ static bool	pick_the_forks(t_philo *philo, t_forks *forks)
 		return (QUIT);
 	}
 	mutex_handle(philo->second_fork, LOCK);
+	mutex_handle(&philo->globals->meal_lock, LOCK);
 	forks->second_fork = true;
 	if (!msg_broadcast(philo, FORK, 0, forks))
+	{
+		mutex_handle(&philo->globals->meal_lock, UNLOCK);
 		return (QUIT);
+	}
 	return (CONTINUE);
 }
 
 static bool	eat_spaghetti(t_philo *philo, t_forks *forks)
 {
 	if (!msg_broadcast(philo, EATING, 0, forks))
+	{
+		mutex_handle(&philo->globals->meal_lock, UNLOCK);
 		return (QUIT);
-	mutex_handle(&philo->globals->meal_lock, LOCK);
+	}
 	philo->meal_count += 1;
 	philo->last_meal = get_current_time();
 	mutex_handle(&philo->globals->meal_lock, UNLOCK);
