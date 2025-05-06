@@ -1452,3 +1452,17 @@ Simulation start: 0 Death: 100
 
 -- No Death Tests --
 
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----

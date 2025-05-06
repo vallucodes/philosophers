@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 13:32:58 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 20:23:40 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/06 16:57:32 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	msg_broadcast(t_philo *philo, char *msg, int death, t_forks *forks)
 		return (pthread_mutex_unlock(&philo->globals->msg_lock), 0);
 	}
 	pthread_mutex_unlock(&philo->globals->msg_lock);
-	return (1);
+	return (CONTINUE);
 }
 
 size_t	get_current_time(void)

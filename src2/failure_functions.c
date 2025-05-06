@@ -19,6 +19,9 @@ int	failing_pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t
 	static int call_count = 0;
 	call_count++;
 	if (call_count == 3)
-		return EAGAIN;
+	{
+		errno = EAGAIN;
+		return -1;
+	}
 	return pthread_mutex_init(mutex, attr);
 }
