@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:47:04 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 20:54:47 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/05 15:43:33 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void	*thread_routine(void *arg)
 	philo = (t_philo *)arg;
 	waiting_to_start(philo);
 	philo->start = get_current_time();
-	pthread_mutex_lock(&philo->globals->meal_lock);
+	mutex_handle(&philo->globals->meal_lock, LOCK);
 	philo->last_meal = philo->start;
-	pthread_mutex_unlock(&philo->globals->meal_lock);
+	mutex_handle(&philo->globals->meal_lock, UNLOCK);
 	starting_routine(philo);
 	while (check_any_death(philo) == CONTINUE)
 	{

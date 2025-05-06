@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 22:58:29 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 19:50:40 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/05 15:43:22 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,24 @@ static bool	mutex_error(int return_value, t_ops op)
 {
 	if (return_value == 0)
 		return (SUCCESS);
-	if (return_value == EAGAIN)
+	if (errno == EAGAIN)
 		print_error("Max recursive locks exceeded or resource limit reached.\n");
-	else if (return_value == EINVAL && op == INIT)
-		print_error("Invalid mutex attributes.\n");
-	else if (return_value == EINVAL && (op == LOCK || op == UNLOCK))
+	else if (errno == EINVAL && op == INIT)
+		print_error("Invalid mutex or attributes.\n");
+	else if (errno == EINVAL && (op == LOCK || op == UNLOCK))
 		print_error("Thread priority too high for mutex.\n");
-	else if (return_value == ENOMEM)
+	else if (errno == ENOMEM)
 		print_error("Insufficient memory for mutex operation.\n");
-	else if (return_value == EPERM)
+	else if (errno == EPERM)
 		print_error("No permission for this mutex operation.\n");
-	else if (return_value == EDEADLK)
+	else if (errno == EDEADLK)
 		print_error("Deadlock detected or thread already owns mutex.\n");
-	else if (return_value == ENOTRECOVERABLE)
+	else if (errno == ENOTRECOVERABLE)
 		print_error("Mutex state not recoverable.\n");
-	else if (return_value == EOWNERDEAD)
+	else if (errno == EOWNERDEAD)
 		print_error("Previous mutex owner terminated unexpectedly.\n");
 	else
-	{
-		printf("error in %i", op);
 		print_error("Unknown mutex error occurred.\n");
-	}
 	return (FAIL);
 }
 

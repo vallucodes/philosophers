@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:39:19 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 17:06:26 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/05 15:28:58 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <sys/time.h> //gettimeofday
 # include <pthread.h> //threads
 # include <unistd.h> //usleep, write
-# include <limits.h> //LONG_MIN LONG_MAX
 # include <errno.h> //errno
 # include <stdbool.h> //bool
 # include <stdint.h> //SIZE_MAX

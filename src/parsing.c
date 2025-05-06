@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:09:16 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 17:01:33 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/05 15:20:48 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static bool	validate_input(char **av)
 	while (av[++i])
 	{
 		j = -1;
+		if (av[i][0] == '\0')
+			return (print_error(INPUT), FAIL);
 		while (av[i][++j])
 		{
 			if (ft_isdigit(av[i][j]) || (j == 0 && (av[i][j] == '-')))

@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:08:35 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/02 16:07:42 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/05 15:23:50 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static void	collect_threads_stop_simulation(t_global_data *globals)
 	mutex_handle(&globals->start_lock, LOCK);
 	globals->start_flag = 1;
 	mutex_handle(&globals->start_lock, UNLOCK);
-	pthread_mutex_lock(&globals->death_lock);
+	mutex_handle(&globals->death_lock, LOCK);
 	globals->stop_simulation = 1;
-	pthread_mutex_unlock(&globals->death_lock);
+	mutex_handle(&globals->death_lock, UNLOCK);
 }
 
 bool	start_the_dinner(t_global_data *globals)

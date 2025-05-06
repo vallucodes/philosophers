@@ -1,0 +1,1454 @@
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+10 500 100 100 50: Philosophers took too many forks
+	Expected: 501 Actual 502
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+1 500 100 100 2: Philosopher did not die on time
+Simulation start: 0 Death: 200
+
+1 200 60 60 1: Philosopher did not die on time
+Simulation start: 0 Death: 500
+
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+1 500 100 100 10: Philosopher did not die on time
+Simulation start: 0 Death: 200
+
+2147483648 100 60 60: No error message found
+
+-- One Philosopher Tests --
+
+1 200 60 60 1: Timestamp error: Non numerical
+	Simulation start:  Death: 
+
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+1 100 60 60 2: Philosopher did not die on time
+Simulation start: 0 Death: 200
+
+1 100 150 150 10: Timestamp error: Non numerical
+	Simulation start:  Death: 
+
+-- No Death Tests --
+
+1 200 60 60 2: Timestamp error: Non numerical
+	Simulation start:  Death: 
+
+1 200 60 60 1: Philosopher did not die on time
+Simulation start: 0 Death: 100
+
+1 500 100 100 2: Philosopher did not die on time
+Simulation start: 0 Death: 200
+
+2 130 60 60 4: Timestamp error: Non numerical
+	Philo 1 eating timestamp:  Philo 1 sleep timestamp:  Philo 1 think timestamp:  Philo 2 eating timestamp:  Philo 2 sleep timestamp:  Philo 2 think timestamp: 
+
+1 100 60 60 2: Timestamp error: Non numerical
+	Simulation start:  Death: 
+
+1 200 60 60 2: Philosopher did not die on time
+Simulation start: 0 Death: 500
+
+1 500 100 100 10: Philosopher did not die
+
+1 500 100 100 2: Timestamp error: Non numerical
+	Simulation start:  Death: 
+
+1 100 60 60 2: Timestamp error: Non numerical
+	Simulation start:  Death: 
+
+1 1000 250 250 2: Philosopher did not die
+
+1 500 100 100 10: Philosopher did not die
+
+2 300 100 100 5: Timestamp error: Non numerical
+	Philo 1 eating timestamp: 100 Philo 1 sleep timestamp: 200 Philo 1 think timestamp: 300 Philo 2 eating timestamp:  Philo 2 sleep timestamp:  Philo 2 think timestamp: 
+
+1 500 100 100 2: Timestamp error: Non numerical
+	Simulation start:  Death: 
+
+1 100 150 150 10: Timestamp error: Non numerical
+	Simulation start:  Death: 
+
+-- No Death Tests --
+
+1 1000 250 250 2: Timestamp error: Non numerical
+	Simulation start:  Death: 
+
+3 200 65 65 5: Timestamp error: Non numerical
+	Philo 1 eating timestamp:  Philo 1 sleep timestamp:  Philo 1 think timestamp:  Philo 2 eating timestamp:  Philo 2 sleep timestamp:  Philo 2 think timestamp: 
+
+1 500 100 100 10: Philosopher did not die on time
+Simulation start: 0 Death: 100
+
+2 130 60 60 4: Timestamp error: Non numerical
+	Philo 1 eating timestamp:  Philo 1 sleep timestamp:  Philo 1 think timestamp:  Philo 2 eating timestamp:  Philo 2 sleep timestamp:  Philo 2 think timestamp: 
+
+1 100 150 150 10: Timestamp error: Non numerical
+	Simulation start:  Death: 
+
+-- No Death Tests --
+
+1 1000 250 250 2: Timestamp error: Non numerical
+	Simulation start:  Death: 
+
+2 300 100 100 4: Philosophers did not eat for the correct time
+	Expected: 100 Actual: 
+
+3 310 100 200 5: Timestamp error: Non numerical
+	Philo 1 eating timestamp:  Philo 1 sleep timestamp:  Philo 1 think timestamp:  Philo 2 eating timestamp:  Philo 2 sleep timestamp:  Philo 2 think timestamp: 
+
+2 130 60 60 4: Timestamp error: Non numerical
+	Philo 1 eating timestamp:  Philo 1 sleep timestamp:  Philo 1 think timestamp:  Philo 2 eating timestamp:  Philo 2 sleep timestamp:  Philo 2 think timestamp: 
+
+1 100 150 150 10: Philosopher did not die
+
+-- No Death Tests --
+
+2 300 100 100 5: Timestamp error: Non numerical
+	Philo 1 eating timestamp:  Philo 1 sleep timestamp:  Philo 1 think timestamp:  Philo 2 eating timestamp:  Philo 2 sleep timestamp:  Philo 2 think timestamp: 
+
+2 300 100 100 4: Timestamp error: Non numerical
+	Philo 1 eating timestamp:  Philo 1 sleep timestamp:  Philo 1 think timestamp:  Philo 2 eating timestamp:  Philo 2 sleep timestamp:  Philo 2 think timestamp: 
+
+4 210 100 100 10: Timestamp error: Non numerical
+	Philo 1 eating timestamp:  Philo 1 sleep timestamp:  Philo 1 think timestamp:  Philo 2 eating timestamp:  Philo 2 sleep timestamp:  Philo 2 think timestamp: 
+
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+4 410 200 200 10: Philosophers took too many forks
+	Expected: 40 Actual 41
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+2 130 60 60 4: Philosophers did not eat for the correct time
+	Expected: 60 Actual: 
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+10 500 100 100 50: Philosophers took too many forks
+	Expected: 502 Actual 503
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+10 500 100 100 50: Philosophers took too many forks
+	Expected: 502 Actual 503
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+10 500 100 100 50: Philosophers took too many forks
+	Expected: 502 Actual 503
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+10 500 100 100 50: Philosophers took too many forks
+	Expected: 501 Actual 502
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+10 500 100 100 50: Philosophers took too many forks
+	Expected: 501 Actual 502
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+5 600 100 200 5: Philosophers took too many forks
+	Expected: 25 Actual 26
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+10 500 100 100 50: Philosophers took too many forks
+	Expected: 502 Actual 503
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+10 500 100 100 50: Philosophers took too many forks
+	Expected: 502 Actual 503
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+10 500 100 100 50: Philosophers took too many forks
+	Expected: 502 Actual 503
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+10 500 100 100 50: Philosophers took too many forks
+	Expected: 501 Actual 502
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+10 500 100 100 50: Philosophers took too many forks
+	Expected: 501 Actual 502
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
+10 500 100 100 50: Philosophers took too many forks
+	Expected: 501 Actual 502
+
+-- Death Tests --
+
+---- TRACE ENDS ----
+
+============================================================
+
+----- TRACE BEGINS -----
+
+-- Basic Error Tests --
+
+-- One Philosopher Tests --
+
+-- No Death Tests --
+
