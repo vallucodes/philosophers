@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 22:58:29 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/06 14:16:15 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/05/07 14:06:51 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ static bool	mutex_error(int return_value, t_ops op)
 	if (return_value == 0)
 		return (SUCCESS);
 	if (errno == EAGAIN)
-		print_error("Max recursive locks exceeded or resource limit reached.\n");
+		print_error("Max recursive locks exceeded \
+or resource limit reached.\n");
 	else if (errno == EINVAL && op == INIT)
 		print_error("Invalid mutex or attributes.\n");
 	else if (errno == EINVAL && (op == LOCK || op == UNLOCK))
