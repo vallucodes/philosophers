@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 14:39:19 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/05 15:28:58 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/07/06 18:16:09 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ typedef struct s_philo
 {
 	pthread_t		thread;
 	int				id;
-	int				current_process;
 	size_t			start;
 	size_t			current;
 	size_t			last_meal;

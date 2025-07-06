@@ -6,7 +6,7 @@
 /*   By: vlopatin <vlopatin@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/27 13:08:35 by vlopatin          #+#    #+#             */
-/*   Updated: 2025/05/05 15:23:50 by vlopatin         ###   ########.fr       */
+/*   Updated: 2025/07/06 18:16:06 by vlopatin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void	init_philos(t_global_data *globals)
 	{
 		philo[i].id = i + 1;
 		assign_forks(globals, &philo[i], i);
-		philo[i].current_process = 0;
 		philo[i].meal_count = 0;
 		philo[i].start = SIZE_MAX;
 		philo[i].last_meal = SIZE_MAX;
