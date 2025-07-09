@@ -12,7 +12,7 @@ This project introduces multithreading and mutexes. Each philosopher runs on a s
 
 ## 🌟 Rules for simulation
 
-- There are as many fork on the table as philosophers
+- There are as many forks on the table as philosophers
 - Philosophers don't communicate with each other
 - In order to eat philosopher must pick both forks from left and right
 - Philosophers take turns eating, sleeping and thinking in that order
